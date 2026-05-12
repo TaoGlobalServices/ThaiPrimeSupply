@@ -3,188 +3,331 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Herbs & Spices Catalog | Prestige Global Supply Co.,ltd</title>
+    
+    <!-- Advanced SEO Meta Tags -->
+    <title>Herbs & Spices Export Catalog | Thai Prime Supply</title>
+    <meta name="description" content="Premium wholesale export of authentic Thai herbs and spices, including Lemongrass, Galangal, Kaffir Lime Leaves, and Thai Chili. Air freight supply for commercial buyers.">
     
     <link rel="icon" type="image/png" href="assets/logotab.png">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Preconnecting to Google Fonts for Speed -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
+        /* Modern CSS Custom Properties (Matched to Main Site) */
         :root {
-            --primary: #1E3A5F; 
-            --secondary: #2C5282; 
-            --accent: #D9A05B; 
+            --primary: #0F172A; /* Slate 900 */
+            --primary-light: #1E293B; /* Slate 800 */
+            --accent: #D97706; /* Executive Amber/Gold */
+            --accent-hover: #B45309;
             --white: #FFFFFF;
-            --bg-light: #F1F5F9;
-            --text-dark: #1E293B;
-            --text-gray: #475569;
-            --shadow-card: 0 4px 20px rgba(0,0,0,0.06);
-            --transition: all 0.3s ease;
+            --surface: #F8FAFC; /* Slate 50 */
+            --text-main: #334155; /* Slate 700 */
+            --text-light: #64748B; /* Slate 500 */
+            --border-color: #E2E8F0;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
+        /* Base Reset & Typography */
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Montserrat', sans-serif; background-color: var(--white); color: var(--text-dark); line-height: 1.6; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--white); 
+            color: var(--text-main); 
+            line-height: 1.7; 
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
 
-        h1, h2, h3, h4 { color: var(--primary); font-weight: 700; }
-        h2 { font-size: clamp(1.8rem, 3vw, 2.2rem); margin-bottom: 1.5rem; text-align: center; }
-        h2::after { content: ''; display: block; width: 50px; height: 4px; background: var(--accent); margin: 15px auto 0; }
+        h1, h2, h3, h4, .font-heading { font-family: 'Montserrat', sans-serif; color: var(--primary); }
+        h1 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.2; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 1rem; }
+        h2 { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 700; margin-bottom: 1rem; letter-spacing: -0.01em; }
         
-        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 25px; }
-        .section { padding: 100px 0; }
+        .container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+        .section { padding: 6rem 0; }
+        .bg-surface { background-color: var(--surface); }
+
+        /* Premium Glassmorphism Header */
+        header { 
+            position: fixed; top: 0; width: 100%; z-index: 1000; 
+            background: rgba(255, 255, 255, 0.85); 
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+            padding: 1.25rem 0;
+            transition: var(--transition);
+        }
+        header.scrolled { padding: 0.75rem 0; box-shadow: var(--shadow-sm); background: rgba(255, 255, 255, 0.95); }
         
-        /* HEADER */
-        header { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(255, 255, 255, 0.98); box-shadow: 0 2px 10px rgba(0,0,0,0.05); padding: 10px 0; }
-        .logo { text-decoration: none; color: var(--primary); font-weight: 800; font-size: 1.4rem; display: flex; align-items: center; gap: 12px;} 
-        .header-logo { height: 40px; width: auto; object-fit: contain; }
-        .nav-menu { display: flex; gap: 30px; }
-        .nav-menu a { color: var(--text-dark); font-weight: 600; font-size: 0.85rem; text-decoration: none; text-transform: uppercase; }
-        .nav-menu a:hover { color: var(--accent); }
-        .hamburger { display: none; cursor: pointer; font-size: 1.5rem; }
+        .nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Montserrat', sans-serif; text-decoration: none; color: var(--primary); font-weight: 800; font-size: 1.5rem; letter-spacing: -0.5px; display: flex; align-items: center; gap: 0.75rem;} 
+        .header-logo { height: 45px; width: auto; object-fit: contain; transition: var(--transition); }
+        
+        .nav-menu { display: flex; gap: 2.5rem; align-items: center; }
+        .nav-menu a { 
+            color: var(--text-main); font-weight: 600; font-size: 0.875rem; 
+            text-decoration: none; text-transform: uppercase; letter-spacing: 0.05em;
+            position: relative; padding-bottom: 4px;
+            transition: var(--transition);
+        }
+        .nav-menu a::after {
+            content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 0;
+            background-color: var(--accent); transition: var(--transition);
+        }
+        .nav-menu a:hover { color: var(--primary); }
+        .nav-menu a:hover::after { width: 100%; }
+        
+        .btn-nav { padding: 0.75rem 1.5rem !important; background: var(--primary); color: var(--white) !important; border-radius: 6px; }
+        .btn-nav::after { display: none; }
+        .btn-nav:hover { background: var(--accent); color: var(--white) !important; transform: translateY(-2px); }
+
+        .hamburger { display: none; cursor: pointer; font-size: 1.5rem; color: var(--primary); border: none; background: transparent; }
+
+        /* Premium Buttons */
+        .btn { 
+            padding: 1rem 2.25rem; border-radius: 6px; font-family: 'Montserrat', sans-serif; font-weight: 700; 
+            text-transform: uppercase; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem;
+            transition: var(--transition); font-size: 0.9rem; letter-spacing: 0.05em; border: none; cursor: pointer;
+        }
+        .btn-primary { background: var(--accent); color: var(--white); box-shadow: 0 4px 14px rgba(217, 119, 6, 0.3); width: 100%; }
+        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(217, 119, 6, 0.4); }
 
         /* INNER HERO */
-        .inner-hero { padding: 160px 0 60px; background: var(--primary); color: white; text-align: center; }
-        .inner-hero h1 { color: white; font-size: 2.5rem; margin-bottom: 15px; }
-        .btn-back { display: inline-flex; align-items: center; gap: 8px; color: var(--accent); text-decoration: none; font-weight: 600; margin-bottom: 20px; transition: var(--transition); }
-        .btn-back:hover { color: white; }
+        .inner-hero { 
+            padding: 12rem 0 6rem; 
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.9) 100%), url('assets/hero-bg.jpg') center/cover no-repeat;
+            color: var(--white); 
+            text-align: center; 
+        }
+        .inner-hero h1 { color: var(--white); }
+        .inner-hero p { font-size: 1.25rem; color: #CBD5E1; font-weight: 300; max-width: 700px; margin: 0 auto; }
+        
+        .btn-back { 
+            display: inline-flex; align-items: center; gap: 8px; color: var(--accent); 
+            text-decoration: none; font-family: 'Montserrat', sans-serif; font-weight: 600; 
+            margin-bottom: 2rem; transition: var(--transition); text-transform: uppercase; 
+            font-size: 0.875rem; letter-spacing: 0.05em; 
+        }
+        .btn-back:hover { color: var(--white); transform: translateX(-5px); }
 
         /* CATALOG GRID */
-        .catalog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
-        .catalog-item { background: white; border: 1px solid #E2E8F0; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-card); }
-        .catalog-item img { width: 100%; height: 250px; object-fit: cover; border-bottom: 3px solid var(--accent); }
-        .item-info { padding: 25px; }
-        .item-info h3 { font-size: 1.3rem; margin-bottom: 10px; }
-        .item-info p { color: var(--text-gray); font-size: 0.95rem; margin-bottom: 15px; }
+        .catalog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2.5rem; margin-top: 2rem; }
+        .catalog-item { background: var(--white); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); transition: var(--transition); display: flex; flex-direction: column; }
+        .catalog-item:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: var(--accent); }
+        .catalog-item img { width: 100%; height: 280px; object-fit: cover; border-bottom: 4px solid var(--accent); }
         
-        .spec-list { list-style: none; margin-bottom: 20px; padding-top: 15px; border-top: 1px solid #E2E8F0; }
-        .spec-list li { font-size: 0.9rem; margin-bottom: 8px; color: var(--text-dark); }
-        .spec-list strong { color: var(--primary); }
-
-        .btn-gold { background: var(--accent); color: white; padding: 12px 20px; text-decoration: none; border-radius: 4px; display: block; text-align: center; font-weight: 600; transition: var(--transition); }
-        .btn-gold:hover { background: #C58B47; }
+        .item-info { padding: 2.5rem; display: flex; flex-direction: column; flex-grow: 1; }
+        .item-info h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--primary); }
+        .item-info p { color: var(--text-light); font-size: 1rem; margin-bottom: 1.5rem; }
         
-        .float-btn { position: fixed; right: 25px; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 28px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 1000; text-decoration: none; }
-        .wa-float { bottom: 25px; background: #25D366; }
+        .spec-list { list-style: none; margin-bottom: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color); flex-grow: 1; }
+        .spec-list li { font-size: 0.95rem; margin-bottom: 0.75rem; color: var(--text-main); display: flex; gap: 0.75rem; align-items: flex-start; }
+        .spec-list li i { color: var(--accent); margin-top: 4px; font-size: 0.85rem; min-width: 16px; text-align: center; }
+        .spec-list strong { color: var(--primary); font-weight: 600; }
 
-        @media (max-width: 900px) {
-            .nav-menu { position: fixed; top: 60px; left: -100%; width: 100%; background: white; flex-direction: column; padding: 40px; text-align: center; transition: 0.4s; box-shadow: 0 10px 10px rgba(0,0,0,0.05); }
-            .nav-menu.active { left: 0; }
+        /* Footer */
+        footer { background: var(--primary); color: #94A3B8; padding: 5rem 0 2rem; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
+        .footer-brand { color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 800; margin-bottom: 1rem; display: block; }
+        .footer-heading { color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 1.1rem; margin-bottom: 1.5rem; font-weight: 600; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 0.75rem; }
+        .footer-links a { color: #94A3B8; text-decoration: none; transition: var(--transition); }
+        .footer-links a:hover { color: var(--accent); padding-left: 5px; }
+        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.875rem; }
+
+        /* Floating WhatsApp Action */
+        .float-btn { position: fixed; right: 2rem; bottom: 2rem; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 2rem; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4); z-index: 1000; transition: var(--transition); text-decoration: none; background: #25D366; }
+        .float-btn:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 15px 30px rgba(37, 211, 102, 0.5); }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .footer-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .section { padding: 5rem 0; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu { position: fixed; top: 75px; left: -100%; width: 100%; height: calc(100vh - 75px); background: var(--white); flex-direction: column; padding: 3rem 2rem; align-items: flex-start; transition: 0.4s ease; border-top: 1px solid var(--border-color); }
+            .nav-menu.active { left: 0; box-shadow: var(--shadow-lg); }
             .hamburger { display: block; }
+            .btn-nav { width: 100%; text-align: center; margin-top: 1rem; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-            <a href="index.html" class="logo">
-                <img src="assets/logo.png" alt="PGS Logo" class="header-logo" onerror="this.src='https://via.placeholder.com/50x50?text=Logo';">
-                Prestige Global Supply Co.,ltd
+    <!-- Semantic Header -->
+    <header id="main-header" role="banner">
+        <div class="container nav-wrapper">
+            <a href="index.html" class="logo" aria-label="Thai Prime Supply Home">
+                <img src="assets/logo.png" alt="Thai Prime Supply Logo" class="header-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span style="display:none;">Thai Prime Supply</span>
             </a>
 
-            <div class="hamburger" id="mobile-toggle">
+            <button class="hamburger" id="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
                 <i class="fa-solid fa-bars"></i>
-            </div>
+            </button>
 
-            <nav class="nav-menu" id="nav-menu">
-                <a href="index.html#about">About</a>
-                <a href="index.html#products">All Catalogs</a>
-                <a href="index.html#contact">Request Quote</a>
+            <nav class="nav-menu" id="nav-menu" role="navigation">
+                <a href="index.html#about">Corporate</a>
+                <a href="index.html#process">Operations</a>
+                <a href="index.html#products">Export Catalog</a>
+                <a href="index.html#contact" class="btn btn-nav">Request Quote</a>
             </nav>
         </div>
     </header>
 
-    <section class="inner-hero">
-        <div class="container">
-            <a href="index.html#products" class="btn-back"><i class="fa-solid fa-arrow-left"></i> Back to All Catalogs</a>
-            <h1>Thai Herbs & Spices</h1>
-            <p>Essential aromatic ingredients sourced directly from Thai farms. Graded, sorted, and packed to maintain high volatile oil content and freshness.</p>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <div class="catalog-grid">
-                
-                <div class="catalog-item">
-                    <img src="assets/lemongrass.jpg" alt="Fresh Lemongrass" onerror="this.src='https://via.placeholder.com/400x300?text=Fresh+Lemongrass';">
-                    <div class="item-info">
-                        <h3>Fresh Lemongrass</h3>
-                        <p>Plump, highly aromatic stalks trimmed to standard export lengths. Essential for Southeast Asian culinary profiles.</p>
-                        <ul class="spec-list">
-                            <li><strong>Format:</strong> Fresh, roots trimmed, washed</li>
-                            <li><strong>Length:</strong> 20cm - 30cm (customizable)</li>
-                            <li><strong>Packing:</strong> 5kg or 10kg ventilated carton</li>
-                            <li><strong>Shipping:</strong> Air Freight (Cool room)</li>
-                        </ul>
-                        <a href="index.html#contact" class="btn-gold">Request Quote</a>
-                    </div>
-                </div>
-
-                <div class="catalog-item">
-                    <img src="assets/galangal.jpg" alt="Galangal Root" onerror="this.src='https://via.placeholder.com/400x300?text=Galangal+Root';">
-                    <div class="item-info">
-                        <h3>Galangal Root</h3>
-                        <p>Premium Thai galangal. Carefully washed and trimmed to remove excess soil and fibrous ends, delivering robust flavor.</p>
-                        <ul class="spec-list">
-                            <li><strong>Format:</strong> Fresh young or mature roots</li>
-                            <li><strong>Preparation:</strong> Cleaned and soil-free</li>
-                            <li><strong>Packing:</strong> 10kg bulk carton</li>
-                            <li><strong>Shipping:</strong> Air Freight (Cool room)</li>
-                        </ul>
-                        <a href="index.html#contact" class="btn-gold">Request Quote</a>
-                    </div>
-                </div>
-
-                <div class="catalog-item">
-                    <img src="assets/kaffir-lime.jpg" alt="Kaffir Lime Leaves" onerror="this.src='https://via.placeholder.com/400x300?text=Kaffir+Lime+Leaves';">
-                    <div class="item-info">
-                        <h3>Kaffir Lime Leaves</h3>
-                        <p>Vibrant, dark green double-leaves hand-picked to ensure no blemishes or yellowing. Packed to prevent crushing.</p>
-                        <ul class="spec-list">
-                            <li><strong>Format:</strong> Fresh, on-stem or stemless</li>
-                            <li><strong>Quality:</strong> Spot-free, bright color</li>
-                            <li><strong>Packing:</strong> 1kg vacuum sealed or bulk foam box</li>
-                            <li><strong>Shipping:</strong> Air Freight</li>
-                        </ul>
-                        <a href="index.html#contact" class="btn-gold">Request Quote</a>
-                    </div>
-                </div>
-
-                <div class="catalog-item">
-                    <img src="assets/chili.jpg" alt="Thai Bird's Eye Chili" onerror="this.src='https://via.placeholder.com/400x300?text=Thai+Chili';">
-                    <div class="item-info">
-                        <h3>Thai Bird's Eye Chili</h3>
-                        <p>High-heat Thai chilies sorted by size and color profile (red or green). Carefully inspected to remove damaged pods.</p>
-                        <ul class="spec-list">
-                            <li><strong>Format:</strong> Fresh, stem-on</li>
-                            <li><strong>Color:</strong> Mixed, All Red, or All Green</li>
-                            <li><strong>Packing:</strong> 5kg ventilated carton</li>
-                            <li><strong>Shipping:</strong> Air Freight</li>
-                        </ul>
-                        <a href="index.html#contact" class="btn-gold">Request Quote</a>
-                    </div>
-                </div>
-
+    <main role="main">
+        <section class="inner-hero" aria-label="Catalog Header">
+            <div class="container">
+                <a href="index.html#products" class="btn-back"><i class="fa-solid fa-arrow-left-long"></i> Back to All Catalogs</a>
+                <h1>Thai Herbs & Spices</h1>
+                <p>Essential aromatic ingredients sourced directly from Thai farms. Graded, sorted, and packed to maintain high volatile oil content and absolute freshness.</p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <footer style="background: #0F172A; color: #94A3B8; padding: 40px 0; text-align: center; border-top: 5px solid var(--accent);">
+        <section class="section bg-surface">
+            <div class="container">
+                <div class="catalog-grid">
+                    
+                    <article class="catalog-item">
+                        <img src="assets/lemongrass.jpg" alt="Fresh Lemongrass Export" loading="lazy" onerror="this.src='https://via.placeholder.com/400x300?text=Fresh+Lemongrass';">
+                        <div class="item-info">
+                            <h3>Fresh Lemongrass</h3>
+                            <p>Plump, highly aromatic stalks trimmed to standard export lengths. Essential for Southeast Asian culinary profiles.</p>
+                            
+                            <ul class="spec-list">
+                                <li><i class="fa-solid fa-leaf"></i> <div><strong>Format:</strong> Fresh, roots trimmed, washed</div></li>
+                                <li><i class="fa-solid fa-ruler"></i> <div><strong>Length:</strong> 20cm - 30cm (customizable)</div></li>
+                                <li><i class="fa-solid fa-box-open"></i> <div><strong>Packing:</strong> 5kg or 10kg ventilated carton</div></li>
+                                <li><i class="fa-solid fa-plane-departure"></i> <div><strong>Shipping:</strong> Air Freight (Cool room)</div></li>
+                            </ul>
+                            
+                            <a href="index.html#contact" class="btn btn-primary">Request Quotation <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="catalog-item">
+                        <img src="assets/galangal.jpg" alt="Galangal Root Export" loading="lazy" onerror="this.src='https://via.placeholder.com/400x300?text=Galangal+Root';">
+                        <div class="item-info">
+                            <h3>Galangal Root</h3>
+                            <p>Premium Thai galangal. Carefully washed and trimmed to remove excess soil and fibrous ends, delivering robust flavor.</p>
+                            
+                            <ul class="spec-list">
+                                <li><i class="fa-solid fa-leaf"></i> <div><strong>Format:</strong> Fresh young or mature roots</div></li>
+                                <li><i class="fa-solid fa-hands-bubbles"></i> <div><strong>Prep:</strong> Cleaned and soil-free</div></li>
+                                <li><i class="fa-solid fa-box-open"></i> <div><strong>Packing:</strong> 10kg bulk carton</div></li>
+                                <li><i class="fa-solid fa-plane-departure"></i> <div><strong>Shipping:</strong> Air Freight (Cool room)</div></li>
+                            </ul>
+                            
+                            <a href="index.html#contact" class="btn btn-primary">Request Quotation <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="catalog-item">
+                        <img src="assets/kaffir-lime.jpg" alt="Kaffir Lime Leaves Export" loading="lazy" onerror="this.src='https://via.placeholder.com/400x300?text=Kaffir+Lime+Leaves';">
+                        <div class="item-info">
+                            <h3>Kaffir Lime Leaves</h3>
+                            <p>Vibrant, dark green double-leaves hand-picked to ensure no blemishes or yellowing. Packed to prevent crushing.</p>
+                            
+                            <ul class="spec-list">
+                                <li><i class="fa-solid fa-leaf"></i> <div><strong>Format:</strong> Fresh, on-stem or stemless</div></li>
+                                <li><i class="fa-solid fa-magnifying-glass-chart"></i> <div><strong>Quality:</strong> Spot-free, bright color</div></li>
+                                <li><i class="fa-solid fa-box-open"></i> <div><strong>Packing:</strong> 1kg vacuum sealed or bulk foam</div></li>
+                                <li><i class="fa-solid fa-plane-departure"></i> <div><strong>Shipping:</strong> Air Freight</div></li>
+                            </ul>
+                            
+                            <a href="index.html#contact" class="btn btn-primary">Request Quotation <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="catalog-item">
+                        <img src="assets/chili.jpg" alt="Thai Bird's Eye Chili Export" loading="lazy" onerror="this.src='https://via.placeholder.com/400x300?text=Thai+Chili';">
+                        <div class="item-info">
+                            <h3>Thai Bird's Eye Chili</h3>
+                            <p>High-heat Thai chilies sorted by size and color profile (red or green). Carefully inspected to remove damaged pods.</p>
+                            
+                            <ul class="spec-list">
+                                <li><i class="fa-solid fa-leaf"></i> <div><strong>Format:</strong> Fresh, stem-on</div></li>
+                                <li><i class="fa-solid fa-palette"></i> <div><strong>Color:</strong> Mixed, All Red, or All Green</div></li>
+                                <li><i class="fa-solid fa-box-open"></i> <div><strong>Packing:</strong> 5kg ventilated carton</div></li>
+                                <li><i class="fa-solid fa-plane-departure"></i> <div><strong>Shipping:</strong> Air Freight</div></li>
+                            </ul>
+                            
+                            <a href="index.html#contact" class="btn btn-primary">Request Quotation <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Premium Corporate Footer -->
+    <footer>
         <div class="container">
-            <p style="font-size: 1.1rem; margin-bottom: 5px; font-weight: 600; color: white;">Prestige Global Supply Co.,ltd</p>
-            <p style="font-size: 0.85rem; margin-bottom: 15px;">Email: sales@prestigeglobalsupply.com | WhatsApp: +66 92 156 3555</p>
+            <div class="footer-grid">
+                <div>
+                    <span class="footer-brand">Thai Prime Supply</span>
+                    <p style="max-width: 400px; margin-bottom: 1.5rem;">Direct export supplier of premium agricultural goods and poultry. Operating with uncompromising cold-chain integrity from Bangkok to the world.</p>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#about">Corporate Overview</a></li>
+                        <li><a href="index.html#process">Export Protocol</a></li>
+                        <li><a href="index.html#products">Product Catalog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Contact</h4>
+                    <ul class="footer-links">
+                        <li>info@thaiprimesupply.com</li>
+                        <li>+66 92 156 3555</li>
+                        <li>Bangkok, Thailand</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; <span id="year"></span> Thai Prime Supply Co., Ltd. All rights reserved. B2B Global Sourcing.
+            </div>
         </div>
     </footer>
 
-    <a href="https://wa.me/66921563555" class="float-btn wa-float" target="_blank">
+    <!-- Floating Action Button -->
+    <a href="https://wa.me/66921563555" class="float-btn" target="_blank" rel="noopener noreferrer" aria-label="Contact Operations via WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
     <script>
-        const toggle = document.getElementById('mobile-toggle');
-        const nav = document.getElementById('nav-menu');
-        toggle.addEventListener('click', () => nav.classList.toggle('active'));
+        // Set dynamic copyright year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Header Scroll Effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 20) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const toggleBtn = document.getElementById('mobile-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        
+        toggleBtn.addEventListener('click', () => {
+            const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+            toggleBtn.setAttribute('aria-expanded', !isExpanded);
+            navMenu.classList.toggle('active');
+        });
     </script>
 </body>
 </html>
