@@ -4,20 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <!-- Advanced SEO Meta Tags -->
     <title>Thai Prime Supply | Premium B2B Agricultural & Poultry Export</title>
     <meta name="description" content="Direct global export supplier of premium Thai fruits, vegetables, herbs, and frozen poultry. Specializing in high-volume, cold-chain compliant supply for commercial importers.">
     <meta name="keywords" content="Thai Prime Supply, Thailand agriculture export, B2B fruit supplier Thailand, frozen poultry export, wholesale Thai vegetables">
     <meta name="author" content="Thai Prime Supply">
     
-    <!-- Open Graph for Premium Social/Link Sharing -->
     <meta property="og:title" content="Thai Prime Supply | Global B2B Sourcing" />
     <meta property="og:description" content="Scheduled, high-volume export operations for commercial importers and hospitality." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.thaiprimesupply.com/" />
     <meta property="og:site_name" content="Thai Prime Supply" />
 
-    <!-- Enhanced Schema.org for B2B Organizations -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -38,7 +35,6 @@
 
     <link rel="icon" type="image/png" href="assets/logotab.png?v=4">
     
-    <!-- Preconnecting to Google Fonts for Speed -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -88,14 +84,15 @@
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(226, 232, 240, 0.5);
-            padding: 1.25rem 0;
+            padding: 1rem 0;
             transition: var(--transition);
         }
-        header.scrolled { padding: 0.75rem 0; box-shadow: var(--shadow-sm); background: rgba(255, 255, 255, 0.95); }
+        header.scrolled { padding: 0.4rem 0; box-shadow: var(--shadow-sm); background: rgba(255, 255, 255, 0.95); }
         
         .nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
         .logo { font-family: 'Montserrat', sans-serif; text-decoration: none; color: var(--primary); font-weight: 800; font-size: 1.5rem; letter-spacing: -0.5px; display: flex; align-items: center; gap: 0.75rem;} 
         .header-logo { height: 75px; width: auto; object-fit: contain; transition: var(--transition); }
+        header.scrolled .header-logo { height: 45px; }
         
         .nav-menu { display: flex; gap: 2.5rem; align-items: center; }
         .nav-menu a { 
@@ -226,7 +223,7 @@
         }
 
         @media (max-width: 768px) {
-            .nav-menu { position: fixed; top: 75px; left: -100%; width: 100%; height: calc(100vh - 75px); background: var(--white); flex-direction: column; padding: 3rem 2rem; align-items: flex-start; transition: 0.4s ease; border-top: 1px solid var(--border-color); }
+            .nav-menu { position: fixed; top: 60px; left: -100%; width: 100%; height: calc(100vh - 60px); background: var(--white); flex-direction: column; padding: 3rem 2rem; align-items: flex-start; transition: 0.4s ease; border-top: 1px solid var(--border-color); }
             .nav-menu.active { left: 0; box-shadow: var(--shadow-lg); }
             .hamburger { display: block; }
             .btn-nav { width: 100%; text-align: center; margin-top: 1rem; }
@@ -239,11 +236,9 @@
 </head>
 <body>
 
-    <!-- Semantic Header -->
     <header id="main-header" role="banner">
         <div class="container nav-wrapper">
             <a href="#" class="logo" aria-label="Thai Prime Supply Home">
-                <!-- Fallback to text if logo fails, maintaining premium look -->
                 <img src="assets/logo.png" alt="Thai Prime Supply Logo" class="header-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                 <span style="display:none;">Thai Prime Supply</span>
             </a>
@@ -262,7 +257,6 @@
     </header>
 
     <main role="main">
-        <!-- Hero Section -->
         <section class="hero" aria-label="Introduction">
             <div class="container">
                 <div class="hero-content">
@@ -287,7 +281,6 @@
             </div>
         </section>
 
-        <!-- Corporate Overview -->
         <section id="about" class="section bg-surface reveal">
             <div class="container grid-2">
                 <div>
@@ -307,7 +300,6 @@
             </div>
         </section>
 
-        <!-- Operational Transparency -->
         <section class="section reveal" aria-labelledby="transparency-heading">
             <div class="container">
                 <div style="text-align: center; max-width: 700px; margin: 0 auto 4rem;">
@@ -340,7 +332,6 @@
             </div>
         </section>
 
-        <!-- Export Process -->
         <section id="process" class="section bg-surface reveal">
             <div class="container">
                 <h2 style="text-align: center; margin-bottom: 4rem;">Standardized Execution Protocol</h2>
@@ -369,7 +360,6 @@
             </div>
         </section>
 
-        <!-- Catalog Section -->
         <section id="products" class="section reveal">
             <div class="container">
                 <div style="text-align: center; max-width: 700px; margin: 0 auto 4rem;">
@@ -378,7 +368,6 @@
                 </div>
                 
                 <div class="grid-3">
-                    <!-- Product 1 -->
                     <article class="product-card">
                         <a href="vegetables-catalog.html" style="display:contents;">
                             <div class="product-img-wrapper">
@@ -395,7 +384,6 @@
                         </a>
                     </article>
 
-                    <!-- Product 2 -->
                     <article class="product-card">
                         <a href="fruits-catalog.html" style="display:contents;">
                             <div class="product-img-wrapper">
@@ -412,7 +400,6 @@
                         </a>
                     </article>
                     
-                    <!-- Product 3 -->
                     <article class="product-card">
                         <a href="herbs-spices-catalog.html" style="display:contents;">
                             <div class="product-img-wrapper">
@@ -429,7 +416,6 @@
                         </a>
                     </article>
 
-                    <!-- Product 4 -->
                     <article class="product-card">
                         <a href="poultry-catalog.html" style="display:contents;">
                             <div class="product-img-wrapper">
@@ -446,7 +432,6 @@
                         </a>
                     </article>
 
-                    <!-- Product 5 -->
                     <article class="product-card">
                         <a href="coconut-catalog.html" style="display:contents;">
                             <div class="product-img-wrapper">
@@ -466,7 +451,6 @@
             </div>
         </section>
 
-        <!-- Contact Form Section -->
         <section id="contact" class="section bg-surface reveal">
             <div class="container grid-2">
                 <div>
@@ -536,7 +520,6 @@
         </section>
     </main>
 
-    <!-- Premium Corporate Footer -->
     <footer>
         <div class="container">
             <div class="footer-grid">
@@ -567,12 +550,10 @@
         </div>
     </footer>
 
-    <!-- Floating Action Button -->
     <a href="https://wa.me/66921563555" class="float-btn" target="_blank" rel="noopener noreferrer" aria-label="Contact Operations via WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <!-- UI Interaction Scripts -->
     <script>
         // Set dynamic copyright year
         document.getElementById('year').textContent = new Date().getFullYear();
