@@ -100,6 +100,7 @@
             text-decoration: none; text-transform: uppercase; letter-spacing: 0.05em;
             position: relative; padding-bottom: 4px;
             transition: var(--transition);
+            cursor: pointer;
         }
         .nav-menu a::after {
             content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 0;
@@ -204,6 +205,91 @@
         .catalog-feature-item { display: flex; align-items: center; gap: 0.6rem; color: #E2E8F0; font-size: 0.95rem; font-weight: 500; }
         .catalog-feature-item i { color: var(--accent); }
 
+        /* Canva Catalog Modal */
+        .catalog-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.92);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .catalog-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+        .catalog-modal-container {
+            width: 100%;
+            max-width: 1100px;
+            height: 85vh;
+            background: var(--primary-light);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .catalog-modal-header {
+            padding: 1rem 1.5rem;
+            background: var(--primary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--white);
+        }
+        .catalog-modal-header h4 {
+            color: var(--white);
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .catalog-modal-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .modal-close-btn {
+            background: transparent;
+            border: none;
+            color: #94A3B8;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+        }
+        .modal-close-btn:hover {
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .catalog-modal-body {
+            flex-grow: 1;
+            width: 100%;
+            height: 100%;
+            background: #000;
+        }
+        .catalog-modal-body iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
         /* Process Steps */
         .process-wrapper { position: relative; }
         .process-step { background: var(--white); padding: 2.5rem; border-radius: 12px; border: 1px solid var(--border-color); position: relative; overflow: hidden; z-index: 1; }
@@ -230,7 +316,7 @@
         .footer-heading { color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 1.1rem; margin-bottom: 1.5rem; font-weight: 600; }
         .footer-links { list-style: none; }
         .footer-links li { margin-bottom: 0.75rem; }
-        .footer-links a { color: #94A3B8; text-decoration: none; transition: var(--transition); }
+        .footer-links a { color: #94A3B8; text-decoration: none; transition: var(--transition); cursor: pointer; }
         .footer-links a:hover { color: var(--accent); padding-left: 5px; }
         .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.875rem; }
 
@@ -261,6 +347,8 @@
             .cta-group { justify-content: center; }
             .contact-box { padding: 2rem; }
             .catalog-features { flex-direction: column; gap: 0.75rem; }
+            .catalog-modal { padding: 0.5rem; }
+            .catalog-modal-container { height: 95vh; }
         }
     </style>
 </head>
@@ -281,7 +369,7 @@
                 <a href="#about">Corporate</a>
                 <a href="#process">Operations</a>
                 <a href="#products">Export Catalog</a>
-                <a href="https://canva.link/wdoke9kryxpy46j" target="_blank" rel="noopener noreferrer">Digital Catalog</a>
+                <a onclick="openCatalogModal()">Digital Catalog</a>
                 <a href="#contact" class="btn btn-nav">Request Quote</a>
             </nav>
         </div>
@@ -304,4 +392,410 @@
                         <a href="#contact" class="btn btn-primary">
                             Initiate Procurement Request
                         </a>
-                        <a href="https://wa.me/66921563555" class="btn btn-outline" target="_
+                        <a href="https://wa.me/66921563555" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-brands fa-whatsapp"></i> Export Desk
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section bg-surface reveal">
+            <div class="container grid-2">
+                <div>
+                    <h2 class="font-heading">Architects of Reliable Global Supply Chains</h2>
+                    <p style="font-size: 1.125rem; margin-bottom: 1.5rem;"><strong>Thai Prime Supply </strong> serves as the central procurement and logistics authority for international wholesale buyers, headquartered in Bangkok, Thailand.</p>
+                    <p style="color: var(--text-light); margin-bottom: 2rem;">We bridge the gap between regional agricultural producers and global import markets. Our operations eliminate third-party bottlenecks, maintaining strict adherence to product specifications, compliance documentation, and rapid freight timelines.</p>
+                    
+                    <ul class="spec-list">
+                        <li><i class="fa-solid fa-check"></i> <strong>Lean Operations:</strong> Direct accountability from farm to port.</li>
+                        <li><i class="fa-solid fa-check"></i> <strong>Transparent Pricing:</strong> Highly competitive B2B cost structures.</li>
+                        <li><i class="fa-solid fa-check"></i> <strong>Market Coverage:</strong> Active routes across the Middle East & Asia.</li>
+                    </ul>
+                </div>
+                <div>
+                    <img src="assets/corporate-logistics.jpg" alt="Thai Prime Supply Export Operations Center" style="width:100%; border-radius: 16px; box-shadow: var(--shadow-lg); border: 1px solid var(--border-color);" loading="lazy" onerror="this.src='https://via.placeholder.com/800x600?text=Operations+Center';">
+                </div>
+            </div>
+        </section>
+
+        <section class="section reveal" aria-labelledby="transparency-heading">
+            <div class="container">
+                <div style="text-align: center; max-width: 700px; margin: 0 auto 4rem;">
+                    <h2 id="transparency-heading">Uncompromising Quality Control</h2>
+                    <p style="color: var(--text-light);">Our protocols guarantee that every consignment meets strict international commercial standards before leaving Thai soil.</p>
+                </div>
+                
+                <div class="grid-4">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                        <h3>Synchronized Logistics</h3>
+                        <p>Freight dispatch is aligned with established carrier routes to maintain consistent inventory cycles.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-clipboard-check"></i></div>
+                        <h3>Pre-Load Inspection</h3>
+                        <p>Onsite physical QC ensures accurate grading, weight verification, and absolute defect elimination.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-camera"></i></div>
+                        <h3>Visual Verification</h3>
+                        <p>Receive comprehensive digital documentation of your specific cargo prior to airport handover.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-temperature-arrow-down"></i></div>
+                        <h3>Cold Chain Integrity</h3>
+                        <p>Unbroken thermal tracking from blast-freezing facilities through to active reefer loading.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="process" class="section bg-surface reveal">
+            <div class="container">
+                <h2 style="text-align: center; margin-bottom: 4rem;">Standardized Execution Protocol</h2>
+                <div class="grid-4 process-wrapper">
+                    <div class="process-step">
+                        <span class="process-number">01</span>
+                        <h4>Order Validation</h4>
+                        <p>Rapid assessment of requested volumes, specifications, and vessel/flight capacity.</p>
+                    </div>
+                    <div class="process-step">
+                        <span class="process-number">02</span>
+                        <h4>Procurement</h4>
+                        <p>Physical sourcing and grading to meet exact commercial and phytosanitary specs.</p>
+                    </div>
+                    <div class="process-step">
+                        <span class="process-number">03</span>
+                        <h4>Documentation</h4>
+                        <p>Preparation of Phytosanitary, Origin, Health, and Commercial invoices for customs.</p>
+                    </div>
+                    <div class="process-step">
+                        <span class="process-number">04</span>
+                        <h4>Dispatch</h4>
+                        <p>Secure handover to forwarding agents in temperature-controlled environments.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="products" class="section reveal">
+            <div class="container">
+                <div style="text-align: center; max-width: 700px; margin: 0 auto 4rem;">
+                    <h2>Commercial Export Catalog</h2>
+                    <p style="color: var(--text-light);">Access graded products, calculated supply metrics, and precise commercial packaging tailored for wholesale and distribution.</p>
+                </div>
+                
+                <div class="grid-3">
+                    <article class="product-card">
+                        <a href="vegetables-catalog.html" style="display:contents;">
+                            <div class="product-img-wrapper">
+                                <img src="assets/vegetables.jpg" alt="Premium Fresh Thai Vegetables Export" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Fresh+Vegetables';">
+                            </div>
+                            <div class="product-content">
+                                <h3>Fresh Vegetables <i class="fa-solid fa-arrow-right"></i></h3>
+                                <ul class="spec-list">
+                                    <li><i class="fa-solid fa-box"></i> <strong>Pack:</strong> EPS foam box & gel packs</li>
+                                    <li><i class="fa-solid fa-plane"></i> <strong>Freight:</strong> Scheduled Air</li>
+                                    <li><i class="fa-solid fa-scale-balanced"></i> <strong>MOQ:</strong> 100kg minimum</li>
+                                </ul>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="product-card">
+                        <a href="fruits-catalog.html" style="display:contents;">
+                            <div class="product-img-wrapper">
+                                <img src="assets/fruits.jpg" alt="Wholesale Tropical Thai Fruits" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Tropical+Fruits';">
+                            </div>
+                            <div class="product-content">
+                                <h3>Tropical Fruits <i class="fa-solid fa-arrow-right"></i></h3>
+                                <ul class="spec-list">
+                                    <li><i class="fa-solid fa-box"></i> <strong>Pack:</strong> Ventilated export cartons</li>
+                                    <li><i class="fa-solid fa-ship"></i> <strong>Freight:</strong> Air & Sea</li>
+                                    <li><i class="fa-solid fa-scale-balanced"></i> <strong>MOQ:</strong> 100kg minimum</li>
+                                </ul>
+                            </div>
+                        </a>
+                    </article>
+                    
+                    <article class="product-card">
+                        <a href="herbs-spices-catalog.html" style="display:contents;">
+                            <div class="product-img-wrapper">
+                                <img src="assets/herbs-spices.jpg" alt="Authentic Thai Herbs and Spices" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Herbs+%26+Spices';">
+                            </div>
+                            <div class="product-content">
+                                <h3>Thai Herbs & Spices <i class="fa-solid fa-arrow-right"></i></h3>
+                                <ul class="spec-list">
+                                    <li><i class="fa-solid fa-box"></i> <strong>Pack:</strong> Bulk or vacuum-sealed</li>
+                                    <li><i class="fa-solid fa-plane"></i> <strong>Freight:</strong> Air Freight</li>
+                                    <li><i class="fa-solid fa-scale-balanced"></i> <strong>MOQ:</strong> 50kg minimum</li>
+                                </ul>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="product-card">
+                        <a href="poultry-catalog.html" style="display:contents;">
+                            <div class="product-img-wrapper">
+                                <img src="assets/chicken.jpg" alt="Halal Frozen Poultry Export" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Frozen+Poultry';">
+                            </div>
+                            <div class="product-content">
+                                <h3>Frozen Poultry <i class="fa-solid fa-arrow-right"></i></h3>
+                                <ul class="spec-list">
+                                    <li><i class="fa-solid fa-box"></i> <strong>Pack:</strong> Blast-frozen (-18°C)</li>
+                                    <li><i class="fa-solid fa-ship"></i> <strong>Freight:</strong> Sea Reefer FCL</li>
+                                    <li><i class="fa-solid fa-certificate"></i> <strong>Certs:</strong> Halal & GMP</li>
+                                </ul>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="product-card">
+                        <a href="coconut-catalog.html" style="display:contents;">
+                            <div class="product-img-wrapper">
+                                <img src="assets/coconut.jpg" alt="Thai Nam Hom Fragrant Coconuts" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Fragrant+Coconuts';">
+                            </div>
+                            <div class="product-content">
+                                <h3>Fragrant Coconuts <i class="fa-solid fa-arrow-right"></i></h3>
+                                <ul class="spec-list">
+                                    <li><i class="fa-solid fa-box"></i> <strong>Pack:</strong> Diamond-cut standardized</li>
+                                    <li><i class="fa-solid fa-ship"></i> <strong>Freight:</strong> Sea Reefer FCL</li>
+                                    <li><i class="fa-solid fa-leaf"></i> <strong>Variety:</strong> Authentic "Nam Hom"</li>
+                                </ul>
+                            </div>
+                        </a>
+                    </article>
+                </div>
+
+                <!-- ONLINE CANVA CATALOG SECTION -->
+                <div id="online-catalog" class="catalog-view-card reveal">
+                    <div class="grid-2">
+                        <div>
+                            <h3>Explore Our Complete Interactive Digital Catalog</h3>
+                            <p>Browse our full commercial portfolio online instantly without heavy file downloads. Access product sizing tables, harvest schedules, master carton specifications, and export certifications directly inside our viewer.</p>
+                            <div class="catalog-features">
+                                <span class="catalog-feature-item"><i class="fa-solid fa-circle-check"></i> Instant On-Page Access</span>
+                                <span class="catalog-feature-item"><i class="fa-solid fa-circle-check"></i> Always Up-to-Date Packaging Specs</span>
+                                <span class="catalog-feature-item"><i class="fa-solid fa-circle-check"></i> Mobile & Desktop Optimized</span>
+                            </div>
+                            <button onclick="openCatalogModal()" class="btn btn-primary">
+                                <i class="fa-solid fa-book-open"></i> View Digital Catalog
+                            </button>
+                        </div>
+                        <div style="text-align: center;">
+                            <i class="fa-solid fa-book-open-reader" style="font-size: 8rem; color: rgba(255, 255, 255, 0.15);"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CANVA CATALOG EMBEDDED MODAL -->
+        <div id="catalogModal" class="catalog-modal" onclick="closeCatalogOnOverlay(event)">
+            <div class="catalog-modal-container">
+                <div class="catalog-modal-header">
+                    <h4><i class="fa-solid fa-book-open" style="color: var(--accent);"></i> Thai Prime Supply — Digital Export Catalog</h4>
+                    <div class="catalog-modal-actions">
+                        <a href="https://canva.link/wdoke9kryxpy46j" target="_blank" rel="noopener noreferrer" style="color: #CBD5E1; font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 0.4rem;">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open in new tab
+                        </a>
+                        <button class="modal-close-btn" onclick="closeCatalogModal()" aria-label="Close Modal">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="catalog-modal-body">
+                    <iframe id="canvaFrame" src="about:blank" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <section id="contact" class="section bg-surface reveal">
+            <div class="container grid-2">
+                <div>
+                    <h2>Initiate Procurement</h2>
+                    <p style="font-size: 1.125rem; margin-bottom: 2rem; color: var(--text-light);">Connect with our export desk to align on volume capabilities, freight modeling, and current FOB/CIF pricing schedules.</p>
+                    
+                    <div class="info-card">
+                        <h4>Operations & WhatsApp</h4>
+                        <a href="https://wa.me/66921563555" target="_blank" rel="noopener noreferrer">+66 92 156 3555</a>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h4>Commercial Inquiries</h4>
+                        <a href="mailto:info@thaiprimesupply.com">info@thaiprimesupply.com</a>
+                    </div>
+
+                    <div class="info-card">
+                        <h4>Headquarters</h4>
+                        <p>Bangkok, Thailand</p>
+                    </div>
+                </div>
+
+                <div class="contact-box">
+                    <form action="https://formspree.io/f/xkoyezla" method="POST">
+                        <h3 style="margin-bottom: 2rem; font-size: 1.5rem;">Request Quotation</h3>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="company">Registered Company Name</label>
+                            <input class="form-control" type="text" id="company" name="company" placeholder="Legal Entity Name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="email">Procurement Email</label>
+                            <input class="form-control" type="email" id="email" name="email" placeholder="purchasing@yourcompany.com" required>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                            <div class="form-group">
+                                <label class="form-label" for="port">Destination Port</label>
+                                <input class="form-control" type="text" id="port" name="port" placeholder="Arrival Port/Airport" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="interest">Commodity Focus</label>
+                                <select class="form-control" id="interest" name="interest" required>
+                                    <option value="" disabled selected>Select Category...</option>
+                                    <option value="vegetables">Fresh Vegetables</option>
+                                    <option value="fruits">Tropical Fruits</option>
+                                    <option value="herbs">Herbs & Spices</option>
+                                    <option value="chicken">Frozen Poultry</option>
+                                    <option value="coconut">Fragrant Coconuts</option>
+                                    <option value="mixed">Mixed Consolidated</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="message">Volume Metrics & Specifications</label>
+                            <textarea class="form-control" id="message" name="message" rows="4" placeholder="Outline weekly/monthly volume, packaging needs, and preferred incoterms (FOB/CIF)." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            Submit Requirements <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <span class="footer-brand">Thai Prime Supply</span>
+                    <p style="max-width: 400px; margin-bottom: 1.5rem;">Direct export supplier of premium agricultural goods and poultry. Operating with uncompromising cold-chain integrity from Bangkok to the world.</p>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#about">Corporate Overview</a></li>
+                        <li><a href="#process">Export Protocol</a></li>
+                        <li><a href="#products">Product Catalog</a></li>
+                        <li><a onclick="openCatalogModal()">Digital Catalog Viewer</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Contact</h4>
+                    <ul class="footer-links">
+                        <li>info@thaiprimesupply.com</li>
+                        <li>+66 92 156 3555</li>
+                        <li>Bangkok, Thailand</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; <span id="year"></span> Thai Prime Supply Co., Ltd. All rights reserved. B2B Global Sourcing.
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/66921563555" class="float-btn" target="_blank" rel="noopener noreferrer" aria-label="Contact Operations via WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Set dynamic copyright year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Header Scroll Effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 20) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const toggleBtn = document.getElementById('mobile-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        
+        toggleBtn.addEventListener('click', () => {
+            const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+            toggleBtn.setAttribute('aria-expanded', !isExpanded);
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                toggleBtn.setAttribute('aria-expanded', 'false');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Modal Functionality for Canva Catalog Viewer
+        const catalogModal = document.getElementById('catalogModal');
+        const canvaFrame = document.getElementById('canvaFrame');
+        const canvaUrl = 'https://canva.link/wdoke9kryxpy46j';
+
+        function openCatalogModal() {
+            if (canvaFrame.src === 'about:blank' || !canvaFrame.src) {
+                canvaFrame.src = canvaUrl;
+            }
+            catalogModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCatalogModal() {
+            catalogModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function closeCatalogOnOverlay(event) {
+            if (event.target === catalogModal) {
+                closeCatalogModal();
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && catalogModal.classList.contains('active')) {
+                closeCatalogModal();
+            }
+        });
+
+        // Premium Scroll Reveal Animation via IntersectionObserver
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // Run once
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
